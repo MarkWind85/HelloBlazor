@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/HelloWorld.Api/HelloWorld.Api.csproj" />
+    <Project Path="src/HelloWorld.Client/HelloWorld.Client.csproj" />
+    <Project Path="src/HelloWorld.Shared/HelloWorld.Shared.csproj" />
+  </Folder>
+</Solution>

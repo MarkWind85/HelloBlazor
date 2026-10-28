@@ -1,0 +1,18 @@
+@page "/"
+
+<PageTitle>Home — Hello World</PageTitle>
+
+@* Stap 1: dit is de hele app. Eén pagina, een beetje markup, een stukje C#. *@
+
+<h1>Hello, @_name!</h1>
+
+<p>
+    <input @bind="_name" @bind:event="oninput" />
+    <button @onclick="() => _clicks++">Klik mij</button>
+    <span class="muted">@_clicks keer geklikt</span>
+</p>
+
+@code {
+    private string _name = "world";
+    private int _clicks;
+}

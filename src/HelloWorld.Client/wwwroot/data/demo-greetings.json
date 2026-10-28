@@ -1,0 +1,4 @@
+[
+  { "id": "demo-1", "text": "Hallo wereld (demodata)", "language": "nl" },
+  { "id": "demo-2", "text": "Hello world (demo data)", "language": "en" }
+]

@@ -1,0 +1,61 @@
+@page "/greetings"
+@using HelloWorld.Client.Stores
+@using HelloWorld.Shared
+@inject GreetingStore Store
+@inherits StoreComponent
+
+<PageTitle>Begroetingen — Hello World</PageTitle>
+
+@* De pagina leest uit de store en vraagt de store om te muteren. Geen HttpClient hier:
+   dat is de scheiding die het echte project overal aanhoudt (zie Features/Applicatie). *@
+
+<h1>Begroetingen</h1>
+<p class="muted">@Store.Items.Count begroetingen</p>
+
+@if (Store.IsDemo)
+{
+    <p class="banner">Demo-modus: de Api is niet bereikbaar. Wijzigingen blijven in deze sessie.</p>
+}
+
+@if (Store.LastError is not null)
+{
+    <p class="error">Opslaan mislukt: @Store.LastError</p>
+}
+
+@if (Store.IsLoading)
+{
+    <p class="muted">Laden…</p>
+}
+else
+{
+    <ul class="greetings">
+        @foreach (var greeting in Store.Items)
+        {
+            <li><span class="lang">@greeting.Language</span> @greeting.Text</li>
+        }
+    </ul>
+
+    <form class="add" @onsubmit="Add">
+        <input @bind="_text" @bind:event="oninput" placeholder="Nieuwe begroeting" />
+        <select @bind="_language">
+            <option value="nl">nl</option>
+            <option value="en">en</option>
+            <option value="de">de</option>
+        </select>
+        <button type="submit">Toevoegen</button>
+    </form>
+}
+
+@code {
+    private string _text = "";
+    private string _language = "nl";
+
+    protected override IEnumerable<IChangeNotifier> Notifiers => [Store];
+
+    private async Task Add()
+    {
+        var text = _text;
+        _text = "";
+        await Store.AddAsync(text, _language);
+    }
+}

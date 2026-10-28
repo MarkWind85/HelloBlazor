@@ -1,0 +1,17 @@
+@using HelloWorld.Client.Stores
+@inherits LayoutComponentBase
+@inject GreetingStore Greetings
+
+<nav>
+    <strong>Hello World</strong>
+    <NavLink href="" Match="NavLinkMatch.All">Home</NavLink>
+    <NavLink href="greetings">Begroetingen</NavLink>
+</nav>
+
+<main>@Body</main>
+
+@code {
+    // De layout laadt de stores bij de eerste render, zodat elke pagina meteen data vindt.
+    // (Echt: Layout/MainLayout.razor laadt alle stores parallel.)
+    protected override async Task OnInitializedAsync() => await Greetings.LoadAsync();
+}
