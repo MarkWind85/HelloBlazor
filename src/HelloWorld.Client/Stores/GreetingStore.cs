@@ -54,7 +54,7 @@ public sealed class GreetingStore(ApiClient api, DemoDataService demoData) : ICh
 
     /// <summary>
     /// Optimistisch: de begroeting staat meteen in de lijst, daarna gaat hij naar de Api.
-    /// Weigert de Api hem (bijvoorbeeld een lege tekst), dan draait de store het terug en
+    /// Weigert de Api hem toch, dan draait de store het terug en
     /// zet de reden in <see cref="LastError"/>. In demo-modus blijft het lokaal.
     /// Een lege tekst weigert de store zelf al, dus ook zonder Api.
     /// (Echt: <c>Stores/ApiSync.cs</c> — optimistic sync met rollback.)

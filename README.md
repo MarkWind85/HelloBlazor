@@ -49,7 +49,7 @@ De twee casustests falen zonder de `if` in `GreetingStore.AddAsync` en slagen er
 
 Twee dingen om live te laten zien:
 
-- **De regel**: voeg een lege begroeting toe. Hij verschijnt even en verdwijnt weer (rollback), met de melding uit de procedure.
+- **De regel**: voeg een lege begroeting toe. Hij verschijnt even en verdwijnt weer (rollback), met de melding uit de procedure. Zo werkt `master`; op deze branch houdt de store hem al tegen, zonder verzoek naar de Api.
 - **De terugval**: stop de Api en herlaad. De pagina werkt op demodata.
 
 ## Wat hier bewust anders is
