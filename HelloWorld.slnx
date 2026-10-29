@@ -4,4 +4,7 @@
     <Project Path="src/HelloWorld.Client/HelloWorld.Client.csproj" />
     <Project Path="src/HelloWorld.Shared/HelloWorld.Shared.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/HelloWorld.Tests/HelloWorld.Tests.csproj" />
+  </Folder>
 </Solution>
