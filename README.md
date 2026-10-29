@@ -40,6 +40,8 @@ Twee dingen om live te laten zien:
 - **De regel**: voeg een lege begroeting toe. Hij verschijnt even en verdwijnt weer (rollback), met de melding uit de procedure.
 - **De terugval**: stop de Api en herlaad. De pagina werkt op demodata.
 
+Het eindpunt van de casus staat op branch `casus-eind`: de controle in `GreetingStore.AddAsync` en `tests/HelloWorld.Tests`, met tests die de fix vastleggen.
+
 ## Wat hier bewust anders is
 
 - Een gewone ASP.NET Core minimal API in plaats van Azure Functions, en een lijst in het geheugen in plaats van SQL Server. Geen Docker of Functions Core Tools nodig.
