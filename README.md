@@ -14,6 +14,17 @@ cd src/HelloWorld.Client && dotnet run     # http://localhost:5071
 
 Api niet gestart? Dan draait de client op ingebouwde demodata, met een banner. Dat is bewust.
 
+## Testen
+
+```bash
+dotnet test     # vanuit de root van de repo
+```
+
+- `GreetingStoreTests.cs`: de store tegen een nagebootste Api en demodata. Terugval op demodata, rollback na een geweigerde begroeting, en de casus: een lege begroeting komt de lijst niet in, met én zonder Api.
+- `ArchitectureTests.cs`: alleen `Kern` kent de `HttpClient`.
+
+De twee casustests falen zonder de `if` in `GreetingStore.AddAsync` en slagen ermee.
+
 ## Structuur en wat het in het echte project is
 
 | Hier | Echt (`c-enterprise-canonical`) | Rol |
@@ -27,6 +38,7 @@ Api niet gestart? Dan draait de client op ingebouwde demodata, met een banner. D
 | `Client/Features/Greetings/GreetingsPage.razor` | `Client/Features/Applicatie/ApplicationsPage.razor` | Eén feature, één map |
 | `Client/Layout/MainLayout.razor` | `Client/Layout/MainLayout.razor` | Laadt de stores bij de eerste render |
 | `Client/wwwroot/data/demo-greetings.json` | `Client/wwwroot/data/demo-*.json` | Demodata voor als de Api er niet is |
+| `tests/HelloWorld.Tests/` | `tests/EnterpriseCanonical.Api.Tests/` | xUnit: storegedrag tegen een nagebootste backend, en een architectuurregel |
 
 ## Live bouwen in vier stappen
 
